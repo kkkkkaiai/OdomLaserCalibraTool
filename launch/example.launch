@@ -1,10 +1,10 @@
 <launch>
 
   <node pkg="laser-odom_calibration" name="calib" type="io_test" output="screen">
-    <param name="file_path" type="string" value="/home/heyijia/ros_ws/OLCalibra_ws/" />
-    <param name="bagname" type="string" value="2019-02-26-12-01-45" />
+    <param name="file_path" type="string" value="/home/ri-robot/learn/calibration_ws/src/OdomLaserCalibraTool/" />
+    <param name="bagname" type="string" value="2022-06-17-18-01-22" />
     <param name="laser_topic" type="string" value="/scan" />
-    <param name="odom_topic" type="string" value="/calibr_data" />
+    <param name="odom_topic" type="string" value="/wheel_speedv" />
   </node>
 
 </launch>

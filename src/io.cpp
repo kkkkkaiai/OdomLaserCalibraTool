@@ -46,19 +46,19 @@ void messageIO::readDataFromBag(const std::string &bag_name, const std::string &
       laser_data.push_back(tmp);
     }
 
-//    nav_msgs::OdometryConstPtr odom = m.instantiate<nav_msgs::Odometry>();
-//    if (odom != NULL) {
-//      odometerData tmp;
-//      tmp.timestamp = odom->header.stamp;
-//      double r_l = 0.4;
-//      double r_r = 0.4;
-//      double b = 0.7;
-//      double v = odom->twist.twist.linear.x;
-//      double omega = odom->twist.twist.angular.z;
-//      tmp.v_l = (v / r_l) - ((omega * b) / (2 * r_l));
-//      tmp.v_r = (v / r_r) + ((omega * b) / (2 * r_r));
-//      odom_data.push_back(tmp);
-//    }
+  //  nav_msgs::OdometryConstPtr odom = m.instantiate<nav_msgs::Odometry>();
+  //  if (odom != NULL) {
+  //    odometerData tmp;
+  //    tmp.timestamp = odom->header.stamp;
+  //    double r_l = 0.101;
+  //    double r_r = 0.4;
+  //    double b = 0.7;
+  //    double v = odom->twist.twist.linear.x;
+  //    double omega = odom->twist.twist.angular.z;
+  //    tmp.v_l = (v / r_l) - ((omega * b) / (2 * r_l));
+  //    tmp.v_r = (v / r_r) + ((omega * b) / (2 * r_r));
+  //    odom_data.push_back(tmp);
+  //  }
 
 //    sensor_msgs::JointStateConstPtr odom = m.instantiate<sensor_msgs::JointState>();
 //    if (odom != NULL) {
@@ -73,10 +73,12 @@ void messageIO::readDataFromBag(const std::string &bag_name, const std::string &
     if (odom != NULL) {
       odometerData tmp;
       tmp.timestamp = odom->header.stamp;
-      tmp.v_l = odom->vector.x;
-      tmp.v_r = odom->vector.y;
+      tmp.v_l = odom->vector.x / 60.0 * 2 * 3.1415926;
+      tmp.v_r = odom->vector.y / 60.0 * 2 * 3.1415926;
       odom_data.push_back(tmp);
     }
+
+
   }
 
   // std::cout << "laser size: " << laser_data.size() << '\n' << "odom size: " << odom_data.size() << std::endl;
@@ -86,3 +88,4 @@ void messageIO::readDataFromBag(const std::string &bag_name, const std::string &
   return;
 
 }
+  
